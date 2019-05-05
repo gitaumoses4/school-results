@@ -1,0 +1,47 @@
+.search-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-column-gap: 30px;
+
+  input {
+    width: 400px;
+    outline: none;
+    border: 1px solid #ccc;
+    padding: 1em;
+  }
+
+  button {
+    width: 100px;
+    outline: none;
+    border: 1px solid #ffffff;
+    background: transparent;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.5s;
+
+    &:before {
+      position: absolute;
+      content: '';
+      top: 0;
+      z-index: -1;
+      height: 100%;
+      left: 0;
+      width: 0;
+      background: #fff;
+      transition: width 0.5s;
+    }
+
+    &:hover {
+
+      &:before {
+        width: 100%;
+      }
+
+      color: black;
+    }
+  }
+}

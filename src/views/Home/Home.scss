@@ -1,0 +1,38 @@
+.app-home {
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  top: 0;
+  overflow-y: scroll;
+  display: flex;
+  color: white;
+  flex-direction: column;
+  display: -webkit-flex;
+  z-index: -100;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center center;
+
+  &:after {
+    position: fixed;
+    content: '';
+    top: 0;
+    width: 100%;
+    z-index: -99;
+    height: 100%;
+    left: 0;
+    background: rgba(0,150,136, .7)
+  }
+
+  &__title {
+    padding-top: 3em;
+    font-size: 40px;
+  }
+
+  &__search-form {
+    margin-top: 50px;
+  }
+}

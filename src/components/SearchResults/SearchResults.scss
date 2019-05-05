@@ -1,0 +1,29 @@
+.search-results {
+  color: #666;
+  margin-top: 50px;
+
+  .header, .item {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    margin-bottom: 5px;
+    padding: 0.4em 1em;
+  }
+
+  .item {
+    background: white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out all;
+    &:last-child {
+      margin-bottom: 2em;
+    }
+
+    &:hover {
+      color: black;
+      background: #eee;
+    }
+  }
+
+  .header {
+    color: white;
+  }
+}

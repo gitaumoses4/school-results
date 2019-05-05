@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300|Work+Sans:300');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Work Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 300;
+}
+
+.divider {
+  width: 200px;
+  content: '';
+  height: 1px;
+
+  &__dark {
+    background: black;
+  }
+
+  &__light {
+    background: white;
+  }
+}
