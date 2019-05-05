@@ -1,9 +1,10 @@
-import {FETCH_SCHOOL} from '../actions/types';
+import {FETCH_SCHOOL, REQUEST_FILES} from '../actions/types';
 
 const initialState = {
-  isLoading: false,
+  isLoading: true,
   school: {},
-  error: false
+  error: false,
+  requester: {}
 };
 
 export default (state = initialState, action) => {
@@ -14,6 +15,8 @@ export default (state = initialState, action) => {
     return {...state, isLoading: false, school: action.school};
   case `${FETCH_SCHOOL}_FAILURE`:
     return {...state, isLoading: false, error: action.error};
+  case REQUEST_FILES:
+    return {...state, isLoading: true, requester: action.data};
   default:
     return state;
   }

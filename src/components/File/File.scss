@@ -7,12 +7,24 @@
   border: 1px solid $accent;
   cursor: pointer;
   border-radius: 10px;
+  text-decoration: none;
+  color: black;
   display: grid;
   transition: 0.4s all;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 1fr auto;
 
   &:hover {
     box-shadow: 1px 1px 20px 4px rgba(0,0,0,.2);
+  }
+
+  &__payment {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 10px;
+    align-items: center;
+    img {
+      width: 30px;
+    }
   }
 
   &__icon {

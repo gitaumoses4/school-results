@@ -1,0 +1,88 @@
+@import "../../index.scss";
+
+.make-payment {
+  display: grid;
+  width: 100vw;
+  height: calc(100vh - 150px);
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+
+  &__banner {
+    display: grid;
+    align-items: center;
+    img {
+      width: 400px;
+    }
+  }
+
+  &__info {
+    .payment__error {
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      background: rgba(255, 0, 0, 0.2);
+      color: #a80000;
+      border: 1px solid #930906;
+    }
+    &__files {
+      display: grid;
+      grid-auto-columns: minmax(200px, 300px);
+      grid-auto-flow: column;
+      grid-column-gap: 20px;
+
+      .file {
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+
+  &__form {
+
+    form {
+      display: grid;
+
+      .input-field {
+        display: grid;
+
+        &.error {
+          input {
+            border: 1px solid red;
+          }
+        }
+
+        .error {
+          font-size: 12px;
+          color: red;
+        }
+      }
+
+      input {
+        width: 350px;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        outline: none;
+      }
+
+      button {
+        width: 150px;
+        outline: none;
+        background: $accent;
+        color: white;
+        cursor: pointer;
+        border: none;
+        box-shadow: 1px 1px 20px 4px rgba(0,0,0,.1);
+        height: 40px;
+        transition: 0.3s all;
+
+        &:disabled{
+          pointer-events: none;
+          background: #666666;
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+}
+}

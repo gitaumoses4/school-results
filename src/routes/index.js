@@ -3,11 +3,16 @@ import React from 'react';
 import Home from '../views/Home';
 import School from '../views/School';
 import NotFound from '../views/NotFound';
+import EmailSent from '../views/EmailSent';
+import MakePayment from '../views/MakePayment';
 
 const routes = {
   '/': Home,
   '/search': Home,
-  '/school/:id': School
+  '/school/:id': School,
+  '/email-sent': EmailSent,
+  '/payment': MakePayment,
+  '/payment/:token': MakePayment
 };
 
 const App = () => (

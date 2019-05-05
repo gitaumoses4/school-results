@@ -3,11 +3,11 @@ import './Nav.scss';
 import PropTypes from 'prop-types';
 import backIcon from '../../assets/images/back.png';
 
-const Nav = ({ back, title , history}) => (
+const Nav = ({ back, title , history, goHome}) => (
   <nav className="nav">
     {
       back ? (
-        <div className="nav__back" role="presentation" onClick={() => history.goBack()}>
+        <div className="nav__back" role="presentation" onClick={() => {goHome ? history.push('/') : history.goBack();}}>
           <img src={backIcon} alt="" />
         </div>
       ): (<span />)
@@ -19,12 +19,14 @@ const Nav = ({ back, title , history}) => (
 Nav.propTypes = {
   back: PropTypes.bool,
   title: PropTypes.string,
-  history: PropTypes.func
+  history: PropTypes.func,
+  goHome: PropTypes.bool
 };
 
 Nav.defaultProps = {
   back: false,
   title: 'School Analysis Results Directory',
+  goHome: false,
   history: {
     push: () => {}
   }

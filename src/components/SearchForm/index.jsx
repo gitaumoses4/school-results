@@ -16,6 +16,14 @@ class SearchForm extends Component {
     this.setState({ search });
   }
 
+  componentWillReceiveProps(nextProps){
+    const { search } = this.state;
+    if( !search ){
+      const { search: propsSearch } = nextProps;
+      this.setState({ search: propsSearch });
+    }
+  }
+
   onSubmit = (e) => {
     e.preventDefault();
     const { history, searchSchools } = this.props;
@@ -26,14 +34,14 @@ class SearchForm extends Component {
 
   render (){
     const { search } = this.state;
-    const { isLoading, search: propsSearch } = this.props;
+    const { isLoading } = this.props;
     return (
       <form className="search-form" onSubmit={this.onSubmit}>
         <input
           type="text"
           placeholder="Enter school name or code..."
           name="search"
-          value={search || propsSearch}
+          value={search}
           onChange={(e) => { this.setState({ search: e.target.value});}} />
         <button type="submit">
           Search

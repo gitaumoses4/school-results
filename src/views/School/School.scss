@@ -1,27 +1,32 @@
 @import "../../index.scss";
 
 .root__school {
-  grid-template-rows: auto auto;
+  grid-template-rows: auto 1fr;
 }
 
 .school-results {
   display: grid;
 
   &__content {
-    margin-top: 3em;
-    height: 100%;
     display: grid;
+    padding-bottom: 50px;
     grid-template-columns: 1fr 1fr;
 
     &__banner {
-      position: relative;
+      position: sticky;
+      top: 100px;
+      display: grid;
+      padding: 0 20px;
+      grid-template-rows: auto 1fr;
+      justify-content: center;
+      justify-items: center;
+
+      > div {
+        margin-top: 20px;
+      }
 
       img {
-        position: fixed;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        left: 25%;
-        height: 500px;
+        height: 400px;
       }
     }
 
@@ -31,12 +36,19 @@
     }
 
     &__info {
+      height: 100%;
 
       .files {
+        padding-right: 20px;
         &__premium{
           &__files {
             display: grid;
-            grid-template-columns: auto auto auto;
+            grid-template-columns: repeat(3, minmax(200px, 300px));
+            grid-column-gap: 20px;
+
+            .file {
+              width: auto;
+            }
           }
 
           &__form {
@@ -85,6 +97,17 @@
                   pointer-events: none;
                   background: #666666;
                   opacity: 0.4;
+                }
+              }
+
+              .total {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                grid-column-gap: 20px;
+                align-items: center;
+
+                h1 {
+                  color: $accent;
                 }
               }
             }

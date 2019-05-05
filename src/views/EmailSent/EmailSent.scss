@@ -1,0 +1,29 @@
+.email-sent {
+  display: grid;
+  width: 100vw;
+  justify-items: center;
+  justify-content: center;
+
+  &__instructions {
+    width: 500px;
+    text-align: center;
+  }
+
+  &__banner {
+    width: 300px;
+  }
+
+  &__emails {
+    border-top: 1px solid #ccc;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+
+    &--email {
+      display: grid;
+      text-decoration: none;
+      cursor: pointer;
+      color: black;
+    }
+  }
+}

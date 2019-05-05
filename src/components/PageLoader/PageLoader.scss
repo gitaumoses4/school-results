@@ -1,0 +1,24 @@
+.page-loader {
+  height: 100vh;
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  z-index: 300;
+  left: 0;
+  transition: 0.5s all;
+  opacity: 0;
+  width: 100vw;
+
+  &.loading {
+    background: rgba(0,0,0,.5);
+    opacity: 1;
+  }
+
+  > div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 301;
+    transform: translate(-50%, -50%);
+  }
+}
