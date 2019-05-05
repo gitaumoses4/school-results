@@ -1,0 +1,30 @@
+@import "../../index";
+
+.not-found {
+  display: grid;
+  align-items: center;
+  padding: 1em;
+  justify-items: center;
+
+  > img {
+    height: 400px;
+    margin: 20px 0;
+  }
+  &__content {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    a {
+      text-decoration: none;
+      color: white;
+      display: grid;
+      width: 100px;
+      align-items: center;
+      text-align: center;
+      background: $accent;
+      height: 40px;
+      box-shadow: 1px 1px 20px 4px rgba(0,0,0,.2);
+    }
+  }
+}

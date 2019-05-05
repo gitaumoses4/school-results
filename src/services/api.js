@@ -16,7 +16,9 @@ const call = (method, endpoint, data, mock, mockStatus = 200) => new Promise ((r
           resolve(response);
         }else {
           error.status = mockStatus;
-          error.response.data = mock;
+          error.response = {
+            data: mock
+          };
           reject(error);
         }
       }else{

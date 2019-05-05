@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300|Work+Sans:300');
 
+$accent : rgb(0,150,136);
+html {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
   padding: 0;

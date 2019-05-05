@@ -1,1 +1,2 @@
 export const SEARCH_SCHOOLS = 'SEARCH_SCHOOLS';
+export const FETCH_SCHOOL = 'FETCH_SCHOOL';

@@ -1,10 +1,13 @@
-import {Route, Switch} from 'react-router';
+import {Route, Switch, BrowserRouter} from 'react-router-dom';
 import React from 'react';
-import {BrowserRouter} from 'react-router-dom';
 import Home from '../views/Home';
+import School from '../views/School';
+import NotFound from '../views/NotFound';
 
 const routes = {
-  '/': Home
+  '/': Home,
+  '/search': Home,
+  '/school/:id': School
 };
 
 const App = () => (
@@ -12,9 +15,15 @@ const App = () => (
     <Switch>
       {
         Object.keys(routes).map(route => (
-          <Route path={route} key={route} exact component={routes[route]} />
+          <Route
+            path={route}
+            key={route}
+            exact
+            component={routes[route]}
+          />
         ))
       }
+      <Route component={NotFound} path="*" />
     </Switch>
   </BrowserRouter>
 );

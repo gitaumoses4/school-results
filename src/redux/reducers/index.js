@@ -1,9 +1,11 @@
 import {combineReducers} from 'redux';
 import searchSchools from './searchSchools';
+import school from './school';
 
 
 const rootReducer = combineReducers({
-  searchSchools
+  searchSchools,
+  school
 });
 
 export default rootReducer;
