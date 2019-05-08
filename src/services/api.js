@@ -1,13 +1,14 @@
 import axios from 'axios';
 
 const baseUrl = process.env.REACT_APP_API_URL;
+const mockApi = process.env.REACT_APP_MOCK_API === 'True';
 
 const call = (method, endpoint, data, mock, mockStatus = 200) => new Promise ((resolve, reject) => {
   setTimeout(() => {
     axios[method](`${baseUrl}${endpoint}`, data).then((response) => {
       resolve(response);
     }).catch((error) => {
-      if( process.env.NODE_ENV === 'development' && mock){
+      if( mockApi && mock){
         const response = {
           status: mockStatus,
           data: mock
@@ -25,7 +26,7 @@ const call = (method, endpoint, data, mock, mockStatus = 200) => new Promise ((r
         reject(error);
       }
     });
-  }, process.env.NODE_ENV === 'development' ? 2000 : 0);
+  }, mockApi ? 2000 : 0);
 });
 
 export default class Api {

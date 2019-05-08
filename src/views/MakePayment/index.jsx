@@ -24,9 +24,11 @@ class MakePayment extends Component {
   };
 
   componentDidMount(){
-    const { match: { token }, history, initiatePayment} = this.props;
+    const { match: { params: { token }}, history, initiatePayment} = this.props;
 
-    initiatePayment(token, history);
+    if ( token ){
+      initiatePayment(token, history);
+    }
   }
 
   componentWillReceiveProps(nextProps){
@@ -51,7 +53,7 @@ class MakePayment extends Component {
     const { makePayment, token } = this.props;
     const { phoneNumber } = this.state;
 
-    makePayment(token,phoneNumber );
+    makePayment(token, phoneNumber );
   };
 
 
@@ -61,11 +63,16 @@ class MakePayment extends Component {
   };
 
   render(){
-    const { history, isLoading, requestInfo: { files = [] }, paymentError} = this.props;
+    const { history, isLoading, requestInfo: { files = [] }, paymentError, paymentSuccess} = this.props;
     const { phoneNumber, error , modal: { isShowing, message, title, subTitle}} = this.state;
     return (
       <NavWrapper history={history} goHome back>
-        <Modal message={message} title={title} isShowing={isShowing} subTitle={subTitle} />
+        <Modal
+          message={message}
+          title={title}
+          isShowing={isShowing}
+          subTitle={subTitle}
+        />
         <PageLoader isLoading={isLoading} />
         {
           (!isLoading || files.length) ? (
@@ -101,7 +108,7 @@ class MakePayment extends Component {
                       {error && <span className="error">Please enter a valid phone number</span>}
                     </div>
                     <p>Ensure your phone is unlocked before proceeding with the payment</p>
-                    <button type="submit" disabled={error}>
+                    <button type="submit" disabled={error || paymentSuccess}>
                       Make Payment
                     </button>
                   </form>

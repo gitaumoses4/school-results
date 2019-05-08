@@ -1,9 +1,9 @@
 .page-loader {
   height: 100vh;
   position: fixed;
-  pointer-events: none;
   top: 0;
   z-index: 300;
+  pointer-events: none;
   left: 0;
   bottom: 0;
   transition: 0.5s all;
@@ -13,6 +13,8 @@
   &.loading {
     background: rgba(0,0,0,.5);
     opacity: 1;
+    pointer-events: all;
+    z-index: 301;
   }
 
   > div {

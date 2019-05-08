@@ -3,7 +3,7 @@ import './Nav.scss';
 import PropTypes from 'prop-types';
 import backIcon from '../../assets/images/back.png';
 
-const Nav = ({ back, title , history, goHome}) => (
+const Nav = ({ back, title , history, goHome, amount}) => (
   <nav className="nav">
     {
       back ? (
@@ -13,6 +13,16 @@ const Nav = ({ back, title , history, goHome}) => (
       ): (<span />)
     }
     <h1 className="nav__title">{title}</h1>
+    {
+      amount && (
+        <div className="cart">
+          <i className="fas fa-shopping-cart" />
+          <span>
+            { amount }
+          </span>
+        </div>
+      )
+    }
   </nav>
 );
 

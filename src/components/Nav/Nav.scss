@@ -1,3 +1,5 @@
+@import '../../index';
+
 .nav {
   width: calc(100% - 40px);
   height: 50px;
@@ -44,5 +46,17 @@
   &__title {
     margin: 0;
     padding: 0;
+  }
+
+  .cart {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: auto auto;
+    font-size: 20px;
+    margin-left: auto;
+
+    span {
+      color: $accent;
+    }
   }
 }

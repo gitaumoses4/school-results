@@ -119,7 +119,8 @@ const types = {
   raw: RawData(),
   subcounty: SubCounty(),
   county: County(),
-  country: Kenya()
+  country: Kenya(),
+  all: All()
 };
 
 const FileDescription = ({ type }) => (

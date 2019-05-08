@@ -13,16 +13,13 @@
     &__banner {
       display: grid;
       padding: 0 20px;
-      grid-template-rows: auto 1fr;
-      justify-content: center;
-      justify-items: center;
 
       > div {
         margin-top: 20px;
       }
 
       > img {
-        height: 400px;
+        height: 100px;
         display: none;
       }
     }
@@ -30,6 +27,56 @@
     &__title {
       font-size: 50px;
       margin: 0;
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+
+      p {
+        font-size: 16px;
+      }
+
+      &__info {
+        position: relative;
+        width: 140px;
+        height: 50px;
+        background: $accent;
+        border: none;
+        color: white;
+        margin-right: 50px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: 0.5s all;
+        outline: none;
+
+        &:before , &:after{
+          position: absolute;
+          transition: 0.5s all;
+          content: '';
+          right: -11px;
+          top: 15px;
+          width: 20px;
+          z-index: -1;
+          height: 20px;
+          transform: rotate(45deg);
+          background: $accent;
+          border-top: 1px solid $accent;
+          border-right: 1px solid $accent;
+        }
+
+        &:after {
+          z-index: 2;
+        }
+
+        &:hover {
+          box-shadow: 1px 1px 5px 2px rgba(0,0,0,.2);
+          &:before {
+            box-shadow: 1px 1px 5px 2px rgba(0,0,0,.2);
+          }
+        }
+      }
     }
 
     &__info {
@@ -54,7 +101,7 @@
               height: 300px;
 
               .file {
-                margin-top: 50px;
+                margin-top: 100px;
                 width: 300px;
                 height: 300px;
               }
@@ -71,12 +118,33 @@
             }
           }
 
+          &__complete {
+            display: grid;
+            justify-content: center;
+          }
+
           &__form {
+            border: 1px solid #ccc;
+            padding: 20px 50px;
             display: grid;
             grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            border-radius: 20px;
+            align-items: center;
+            margin-top: 100px;
+
+            .illustration {
+              height: 300px;
+              grid-row-start: 1;
+              grid-column-start: 2;
+              align-self: center;
+              justify-self: center;
+              grid-row-end: 3;
+            }
 
             form {
               display: grid;
+              grid-row-start: 2;
 
               .input-field {
                 display: grid;
@@ -95,10 +163,14 @@
               }
 
               input {
-                width: 350px;
+                width: 100%;
                 padding: 10px 20px;
+                background: white;
+                color: #666;
                 margin-bottom: 5px;
+                height: 30px;
                 border-radius: 3px;
+                font-size: 16px;
                 border: 1px solid #ccc;
                 outline: none;
               }
@@ -128,6 +200,20 @@
                 grid-column-gap: 20px;
                 align-items: center;
 
+                .no-strike {
+                  &:nth-child(2) {
+                    display: none;
+                  }
+                }
+
+                .strike {
+                  &:first-child{
+                    text-decoration: line-through;
+                    color: red;
+                    margin-right: 10px;
+                  }
+
+                }
                 h1 {
                   color: $accent;
                 }
@@ -142,7 +228,7 @@
 
 .file-description {
   max-width: 800px;
-  color: #999;
+  color: #2f2f2f;
 
   ul {
     list-style-type: none;
@@ -188,6 +274,26 @@
 
     &__title {
       font-size: 20px !important;
+    }
+  }
+}
+
+
+.file-descriptions {
+  padding: 20px 30px;
+
+  &__file {
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(0,0,0,.3);
+    h2 {
+      display: grid;
+      align-items: center;
+      grid-template-columns: auto 1fr;
+      grid-gap: 20px;
+
+      img {
+        width: 40px;
+      }
     }
   }
 }

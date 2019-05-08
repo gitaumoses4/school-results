@@ -15,6 +15,12 @@ class Modal extends Component {
     this.setState({ isShowing: nextProps.isShowing});
   }
 
+  close = () => {
+    const { onClose } = this.props;
+    this.setState({ isShowing: false});
+    onClose && onClose();
+  };
+
   render() {
     let { title, message, subTitle} = this.props;
     const { isShowing } = this.state;
@@ -36,7 +42,7 @@ class Modal extends Component {
             <p>{message}</p>
           </div>
           <div className="modal__content__footer">
-            <button type="button" onClick={() => this.setState({ isShowing: false})}>Okay</button>
+            <button type="button" onClick={this.close}>Okay</button>
           </div>
         </div>
       </div>
