@@ -1,20 +1,16 @@
 @import "../../index.scss";
 
-.root__school {
-  grid-template-rows: auto 1fr;
-}
-
 .school-results {
   display: grid;
+  width: 100vw;
 
   &__content {
     display: grid;
+    width: 100vw;
     padding-bottom: 50px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
 
     &__banner {
-      position: sticky;
-      top: 100px;
       display: grid;
       padding: 0 20px;
       grid-template-rows: auto 1fr;
@@ -25,8 +21,9 @@
         margin-top: 20px;
       }
 
-      img {
+      > img {
         height: 400px;
+        display: none;
       }
     }
 
@@ -37,21 +34,46 @@
 
     &__info {
       height: 100%;
+      padding: 0 20px;
 
       .files {
         padding-right: 20px;
         &__premium{
           &__files {
             display: grid;
-            grid-template-columns: repeat(3, minmax(200px, 300px));
-            grid-column-gap: 20px;
+            grid-template-columns: 8fr 4fr;
+            padding: 20px;
 
-            .file {
-              width: auto;
+            &__all {
+              display: grid;
+              justify-content: center;
+            }
+
+            .multiple-files {
+              width: 300px;
+              height: 300px;
+
+              .file {
+                margin-top: 50px;
+                width: 300px;
+                height: 300px;
+              }
+            }
+
+            &__single {
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(100px, 250px));
+              justify-content: space-between;
+              grid-column-gap: 10px;
+
+              .file {
+              }
             }
           }
 
           &__form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
 
             form {
               display: grid;
@@ -114,6 +136,58 @@
           }
         }
       }
+    }
+  }
+}
+
+.file-description {
+  max-width: 800px;
+  color: #999;
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+      margin-top: 20px;
+    }
+  }
+}
+
+.school-results__content {
+
+  @include mobile{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    padding: 0 20px;
+
+    &__banner {
+      grid-row-start: 2;
+
+      img {
+        display: none;
+      }
+    }
+
+    &__info {
+      grid-row-start: 1;
+
+      .files {
+
+        &__premium {
+          &__files {
+            grid-auto-columns: minmax(50px ,100px);
+            .file {
+              width: 100px;
+              height: 100px;
+            }
+          }
+        }
+      }
+    }
+
+    &__title {
+      font-size: 20px !important;
     }
   }
 }

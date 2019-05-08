@@ -1,12 +1,64 @@
+@import '../../index';
+
 .app-home {
   display: grid;
   justify-items: center;
+  justify-content: center;
+  width: 100vw;
+
+  @include mobile {
+    justify-items: stretch;
+    justify-content: stretch;
+
+    &__banner {
+      height: 100px !important;
+    }
+
+    &__sub-title {
+      font-size: 16px;
+    }
+
+    &__search-form {
+
+      .search-form{
+        width: auto;
+        grid-template-columns: 1fr;
+        padding:0 20px;
+        grid-template-rows: 1fr auto;
+        grid-row-gap: 10px;
+
+        input {
+          width: auto;
+        }
+
+        button {
+          height: 40px;
+          justify-self: center;
+        }
+      }
+    }
+
+    .search-results {
+      padding: 0 20px;
+
+      .item {
+        width: auto;
+        font-size: 14px;
+      }
+    }
+  }
 
   &__banner {
     padding: 40px;
     height: 200px;
   }
+
+  &__sub-title {
+    text-align: center;
+  }
+
   &__title {
+    text-align: center;
     padding-top: 3em;
     font-size: 40px;
   }

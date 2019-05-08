@@ -7,6 +7,7 @@ import analysis from '../../assets/images/analysis.svg';
 import SearchResults from '../../components/SearchResults';
 import {searchSchools} from '../../redux/actions/actions';
 import Nav from '../../components/Nav';
+import NavWrapper from '../../components/NavWrapper';
 
 class Home extends Component{
 
@@ -37,8 +38,7 @@ class Home extends Component{
     const { schools, searchDone, history } = this.props;
     const { search } = this.state;
     return (
-      <div>
-        <Nav />
+      <NavWrapper>
         <div className="app-home">
           <img src={analysis} alt="" className="app-home__banner" />
           <h2 className="app-home__sub-title">Get the most accurate analysis of your school's performance</h2>
@@ -53,7 +53,7 @@ class Home extends Component{
             }
           </div>
         </div>
-      </div>
+      </NavWrapper>
     );
   }
 }

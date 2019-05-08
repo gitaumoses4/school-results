@@ -11,8 +11,8 @@ import {INITIATE_PAYMENT, MAKE_PAYMENT} from '../actions/types';
 
 export function* initiatePaymentSaga ({ token, history}){
   try {
-    history.push('/payment');
     const { data: { request_info } } = yield call(SchoolsService.requestInfo, token);
+    history.push('/request-files');
     yield put(initiatePaymentSuccess(request_info));
   }catch(error){
     yield put(initiatePaymentFailure(errorHandler(error)));

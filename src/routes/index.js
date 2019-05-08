@@ -11,8 +11,8 @@ const routes = {
   '/search': Home,
   '/school/:id': School,
   '/email-sent': EmailSent,
-  '/payment': MakePayment,
-  '/payment/:token': MakePayment
+  '/request-files/': MakePayment,
+  '/request-files/:token': MakePayment
 };
 
 const App = () => (

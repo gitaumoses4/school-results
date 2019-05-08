@@ -5,15 +5,39 @@ const sample = 'http://www.ovh.net/files/1Mb.dat';
 const other_files = [
   {
     id: 1,
-    name: 'First.xls'
+    name: 'Differential Analysis.pdf',
+    cost: 1950,
+    file_type: 'differential'
   },
   {
     id: 2,
-    name: 'Second.pdf'
+    name: 'Raw Data.pdf',
+    cost: 1950,
+    file_type: 'raw'
   },
   {
     id: 3,
-    name: 'Third.pdf'
+    name: 'KCSE Analysis.pdf',
+    cost: 1000,
+    file_type: 'kcse'
+  },
+  {
+    id: 4,
+    name: 'Sub County Analysis.pdf',
+    cost: 1500,
+    file_type: 'subcounty'
+  },
+  {
+    id: 5,
+    name: 'County Analysis',
+    cost: 1500,
+    file_type: 'county'
+  },
+  {
+    id: 6,
+    name: 'Kenya Analysis',
+    cost: 1500,
+    file_type: 'country'
   }
 ];
 
@@ -21,18 +45,24 @@ const schools = [
   {
     name: 'Kirinyaga Secondary School',
     code: '1123',
+    county_code: '02',
+    subcounty_code: '0202',
     sample,
     other_files
   },
   {
     name: 'Bright Star Academy',
     code: '2123',
+    county_code: '02',
+    subcounty_code: '0202',
     sample,
     other_files
   },
   {
     name: 'Kiwanja Secondary School',
     code: '3643',
+    county_code: '02',
+    subcounty_code: '0202',
     sample,
     other_files
   },
