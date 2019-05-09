@@ -1,7 +1,7 @@
 {
   "name": "school-results",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://gitaumoses4.github.io/school-results",
   "dependencies": {
     "@babel/core": "7.4.3",
