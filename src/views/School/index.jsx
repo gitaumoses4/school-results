@@ -73,9 +73,8 @@ class School extends Component {
     const { selectedFiles } = this.state;
     const { school: { other_files } } = nextProps;
     this.setState({ selectedFiles: {
-      ...selectedFiles,
       ...(other_files.reduce((acc, file) => (
-        {...acc, [file.id]: false}
+        {...acc, [file.id]: selectedFiles[file.id]}
       ), {}))
     }});
   };
