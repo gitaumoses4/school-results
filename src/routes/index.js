@@ -28,7 +28,6 @@ const App = () => (
           />
         ))
       }
-      <Route component={NotFound} path="*" />
     </Switch>
   </BrowserRouter>
 );

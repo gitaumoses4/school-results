@@ -2,13 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import {Provider} from 'react-redux';
+import {HashRouter} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/store';
 import App from './routes';
 
 const routes = () => (
   <Provider store={store}>
-    <App />
+    <HashRouter basename="/">
+      <App />
+    </HashRouter>
   </Provider>
 );
 ReactDOM.render(routes(), document.getElementById('root'));

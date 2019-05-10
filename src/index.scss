@@ -8,6 +8,12 @@ $accent : rgb(0,150,136);
   }
 }
 
+@mixin tablet {
+  @media(min-width: 600px) and (max-width: 1200px) {
+    @content
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
