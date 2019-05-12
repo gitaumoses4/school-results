@@ -12,7 +12,7 @@ import {INITIATE_PAYMENT, MAKE_PAYMENT} from '../actions/types';
 export function* initiatePaymentSaga ({ token, history}){
   try {
     const { data: { request_info } } = yield call(SchoolsService.requestInfo, token);
-    history.push('/request-files');
+    process.env.NODE_ENV !== 'development' && history.push('/request-files');
     yield put(initiatePaymentSuccess(request_info));
   }catch(error){
     yield put(initiatePaymentFailure(errorHandler(error)));

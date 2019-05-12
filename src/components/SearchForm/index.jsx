@@ -11,9 +11,31 @@ class SearchForm extends Component {
     search: ''
   };
 
+  form = React.createRef();
+
   componentDidMount() {
     const { search } = this.props;
     this.setState({ search });
+
+    document.addEventListener('scroll',this.stickSearchBar);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.stickSearchBar);
+  }
+
+
+  stickSearchBar = (e) => {
+    const { form : { current }} = this;
+    if( current ){
+      const pos = current.getBoundingClientRect();
+      const { form :{ current: { classList }}} = this;
+      if( pos.top <= 10){
+        classList.add('toolbar');
+      }else {
+        classList.remove('toolbar');
+      }
+    }
   }
 
   componentWillReceiveProps(nextProps){
@@ -36,7 +58,10 @@ class SearchForm extends Component {
     const { search } = this.state;
     const { isLoading } = this.props;
     return (
-      <form className="search-form" onSubmit={this.onSubmit}>
+      <form
+        ref={this.form}
+        className="search-form"
+        onSubmit={this.onSubmit}>
         <input
           type="text"
           placeholder="Enter school name or code..."

@@ -3,19 +3,43 @@
 .make-payment {
   display: grid;
   width: 100vw;
-  height: calc(100vh - 150px);
   grid-template-columns: 1fr 1fr;
+
+  @include  tablet_and_mobile {
+    grid-template-columns: 1fr;
+  }
+
+  &__payment {
+    margin-top: 30px;
+    padding: 20px 20px;
+    @include tablet_and_mobile {
+      display: grid;
+      justify-content: center;
+      border: 1px solid #ccc;
+    }
+
+  }
 
   &__banner {
     display: grid;
     align-items: center;
     justify-self: center;
+
+    @include  tablet_and_mobile{
+      display: none;
+    }
+
     img {
       width: 400px;
     }
   }
 
   &__info {
+    padding: 20px 0;
+
+    @include tablet_and_mobile {
+      padding: 0 10px 20px;
+    }
     .payment__error {
       padding: 0.5em 1em;
       border-radius: 5px;
@@ -28,13 +52,35 @@
       grid-template-columns: repeat(auto-fill, minmax(100px, 250px));
       grid-column-gap: 20px;
 
+      @include  tablet {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        flex-direction: row;
+      }
+
+      @include mobile {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: stretch;
+      }
+
       .file {
         width: 200px;
         height: 200px;
+        border: 1px solid #ccc;
+        border-radius: 0;
+
+        @include mobile {
+          height: auto;
+          width: auto;
+          .file__icon {
+            display: none;
+          }
+        }
       }
     }
-
-
   &__form {
 
     form {
@@ -62,6 +108,10 @@
         border-radius: 3px;
         border: 1px solid #ccc;
         outline: none;
+
+        @include  tablet_and_mobile {
+          width: auto;
+        }
       }
 
       button {
@@ -75,6 +125,9 @@
         height: 40px;
         transition: 0.3s all;
 
+        @include tablet_and_mobile {
+          justify-self: center;
+        }
         &:disabled{
           pointer-events: none;
           background: #666666;

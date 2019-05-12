@@ -9,11 +9,31 @@
   > img {
     height: 400px;
     margin: 20px 0;
+
+    @include  tablet_and_mobile {
+      width: auto;
+      margin: 0;
+    }
+
+    @include  tablet {
+      height: 200px;
+    }
+
+    @include mobile {
+      height: 100px;
+    }
   }
   &__content {
     display: grid;
     align-items: center;
     justify-items: center;
+
+    @include mobile {
+      h1 {
+        font-size: 20px;
+        text-align: center;
+      }
+    }
 
     a {
       text-decoration: none;

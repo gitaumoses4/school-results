@@ -9,7 +9,31 @@ $accent : rgb(0,150,136);
 }
 
 @mixin tablet {
-  @media(min-width: 600px) and (max-width: 1200px) {
+  @media(min-width: 600px) and (max-width: 1400px) {
+    @content
+  }
+}
+
+@mixin desktop {
+  @media(min-width: 1400px) {
+    @content
+  }
+}
+
+@mixin tablet_and_mobile {
+  @include tablet {
+    @content
+  }
+  @include mobile{
+    @content
+  }
+}
+
+@mixin desktop_and_tablet {
+  @include tablet {
+    @content
+  }
+  @include desktop {
     @content
   }
 }

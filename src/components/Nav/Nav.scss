@@ -16,7 +16,7 @@
 
   @include mobile {
     &__title {
-      font-size: 16px;
+      font-size: 12px;
     }
   }
 
@@ -32,6 +32,10 @@
     border-radius: 50%;
     padding: 5px;
     transition: 0.4s all;
+
+    @include  mobile {
+      margin-right: 10px;
+    }
 
     &:hover {
       background: #ccc;
@@ -54,6 +58,15 @@
     grid-template-columns: auto auto;
     font-size: 20px;
     margin-left: auto;
+
+    @include mobile {
+      font-size: 16px;
+      grid-template-columns: auto;
+      width: 100px;
+      .fas {
+        display: none;
+      }
+    }
 
     span {
       color: $accent;

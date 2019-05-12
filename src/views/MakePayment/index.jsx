@@ -100,18 +100,20 @@ class MakePayment extends Component {
                     ))
                   }
                 </div>
-                <h2>MPESA Phone Number</h2>
-                <div className="make-payment__info__form">
-                  <form onSubmit={this.makePayment}>
-                    <div className={`input-field ${error ? 'error': ''}`}>
-                      <input type="text" name="phoneNumber" value={phoneNumber} onChange={this.onPhoneChanged} />
-                      {error && <span className="error">Please enter a valid phone number</span>}
-                    </div>
-                    <p>Ensure your phone is unlocked before proceeding with the payment</p>
-                    <button type="submit" disabled={error || paymentSuccess}>
-                      Make Payment
-                    </button>
-                  </form>
+                <div className="make-payment__payment">
+                  <h2>MPESA Phone Number</h2>
+                  <div className="make-payment__info__form">
+                    <form onSubmit={this.makePayment}>
+                      <div className={`input-field ${error ? 'error': ''}`}>
+                        <input type="text" name="phoneNumber" value={phoneNumber} onChange={this.onPhoneChanged} />
+                        {error && <span className="error">Please enter a valid phone number</span>}
+                      </div>
+                      <p>Ensure your phone is unlocked before proceeding with the payment</p>
+                      <button type="submit" disabled={error || paymentSuccess}>
+                        Make Payment
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>

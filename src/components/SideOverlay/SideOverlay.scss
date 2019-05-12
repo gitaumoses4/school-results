@@ -1,3 +1,5 @@
+@import '../../index';
+
 .side-overlay {
   position: fixed;
   z-index: 1000;
@@ -24,13 +26,25 @@
     z-index: 1002;
     transition: 0.5s all;
 
+    @include mobile {
+      width: 100%;
+      min-width: 0;
+    }
+
     .close {
       top: 0;
-      right: 0;
+      left: 0;
       position: absolute;
       padding: 15px 20px;
+      width: 100%;
       font-size: 20px;
       cursor: pointer;
+
+      @include mobile {
+        position: sticky;
+        background: white;
+        box-shadow: 1px 0 10px 2px rgba(0,0,0,.1);
+      }
     }
   }
 
@@ -57,7 +71,7 @@
   &.right {
     .side-overlay {
       &__content {
-        right: -100%;
+        right: -1000px;
       }
     }
 

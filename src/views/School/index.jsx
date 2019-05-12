@@ -72,7 +72,7 @@ class School extends Component {
   componentWillReceiveProps = (nextProps) => {
     const { selectedFiles } = this.state;
     const { school: { other_files } } = nextProps;
-    this.setState({ selectedFiles: {
+    other_files && this.setState({ selectedFiles: {
       ...(other_files.reduce((acc, file) => (
         {...acc, [file.id]: selectedFiles[file.id]}
       ), {}))
@@ -152,6 +152,10 @@ class School extends Component {
     <PageLoader isLoading={isLoading} />
   );
 
+  renderError = (history) => (
+    <NotFound history={history} />
+  );
+
   renderDescription = (open, files) => (
     <SideOverlay
       open={open}
@@ -175,118 +179,120 @@ class School extends Component {
   );
 
   renderPage = () => {
-    const { history, school: { name = '', code, sample, other_files }, isLoading } = this.props;
+    const { history, school: { name = '', code, sample, other_files }, isLoading , error} = this.props;
     const { selectedFiles, hasBlankFields, allSelected , totalPrice, showingDescription} = this.state;
 
     return (
-      <NavWrapper title={name} history={history} back amount={`${ allSelected ? 8000 : totalPrice} Ksh`}>
-        <div className="school-results">
-          {this.renderDescription(showingDescription, Object.keys(FileTypes))}
-          {this.renderLoader(isLoading)}
-          {
-            (!isLoading || name) && (
-              <div className="school-results__content">
-                <div className="school-results__content__info">
-                  <h4 className="school-results__content__title">
-                    {'School Results - '+code}
-                    <button
-                      type="button"
-                      className="school-results__content__title__info"
-                      onClick={() => this.setState({showingDescription: true})}>
+      error === 'Could not find school.' ? this.renderError(history) : (
+        <NavWrapper title={name} history={history} back amount={`${ allSelected ? 8000 : totalPrice} Ksh`}>
+          <div className="school-results">
+            {this.renderDescription(showingDescription, Object.keys(FileTypes))}
+            {this.renderLoader(isLoading)}
+            {
+              (!isLoading || name) && (
+                <div className="school-results__content">
+                  <div className="school-results__content__info">
+                    <h4 className="school-results__content__title">
+                      {'School Results - '+code}
+                      <button
+                        type="button"
+                        className="school-results__content__title__info"
+                        onClick={() => this.setState({showingDescription: true})}>
                       More Info
-                    </button>
-                  </h4>
-                  <p>The files below contain analysis based on the schools performance over the years.</p>
-                  <div className="files">
-                    <div className="files__premium">
-                      <div className="files__premium__files">
-                        <div className="files__premium__files__single">
-                          {
-                            <File name="Sample.pdf" link={sample} description="sample" />
-                          }
-                          {
-                            other_files.map(file => (
-                              <File
-                                name={file.name}
-                                key={file.id}
-                                onClick={() => this.onFileChoose(file.id)}
-                                locked
-                                description={file.file_type}
-                                price={file.cost}
-                                type={file.name.substr(file.name.lastIndexOf('.')+1)}
-                                selected={selectedFiles[file.id]}
-                              />
-                            ))
-                          }
-                        </div>
-                        <div className="files__premium__files__all">
-                          {
-                            <ManyFiles
-                              name=""
-                              files={other_files}
-                              price={8000}
-                              onClick={() => this.onFileChoose('all')}
-                              description="all"
-                              selected={allSelected}
-                              locked />
-                          }
-                        </div>
-                      </div>
-                      <div className="files__premium__complete">
-                        <div className="files__premium__form">
-                          <div>
-                            <h2>Request for the files</h2>
-                            <div className="school-results__content__banner">
-                              <div>
-                                <p>1. Choose the files you would like to download</p>
-                                <p>2. Enter your email and phone number</p>
-                                <p>3. You will receive an email with a download link to the files.</p>
-                                <p>4. Once you click on the link sent to your email, you will receive an MPESA payment prompt.</p>
-                                <p>5. If the payment is successful, you will receive an email with the files you selected.</p>
-                              </div>
-                            </div>
+                        <i className="fas fa-chevron-right" />
+                      </button>
+                    </h4>
+                    <p>The files below contain analysis based on the schools performance over the years.</p>
+                    <div className="files">
+                      <div className="files__premium">
+                        <div className="files__premium__files">
+                          <div className="files__premium__files__single">
+                            {
+                              <File name="Sample.pdf" link={sample} description="sample" />
+                            }
+                            {
+                              other_files.map(file => (
+                                <File
+                                  name={file.name}
+                                  key={file.id}
+                                  onClick={() => this.onFileChoose(file.id)}
+                                  locked
+                                  description={file.file_type}
+                                  price={file.cost}
+                                  type={file.name.substr(file.name.lastIndexOf('.')+1)}
+                                  selected={selectedFiles[file.id]}
+                                />
+                              ))
+                            }
                           </div>
-                          <form onSubmit={this.requestFiles}>
-                            {this.renderInput(
-                              'email',
-                              'email',
-                              'Email Address',
-                              validateEmail,
-                              'Please enter a valid email')
+                          <div className="files__premium__files__all">
+                            {
+                              <ManyFiles
+                                name=""
+                                files={other_files}
+                                price={8000}
+                                onClick={() => this.onFileChoose('all')}
+                                description="all"
+                                selected={allSelected}
+                                locked />
                             }
-                            {this.renderInput(
-                              'phoneNumber',
-                              'phone',
-                              'MPESA phone number',
-                              validatePhone,
-                              'Please enter a valid phone number')
-                            }
+                          </div>
+                        </div>
+                        <div className="files__premium__complete">
+                          <div className="files__premium__form">
                             <div>
-                              <button type="submit" disabled={hasBlankFields}>
-                              Get Files
-                              </button>
-                              <div className="total">
-                                {'Total '}
-                                <h1>
-                                  <span className={allSelected ? 'strike': 'no-strike'}>{`${totalPrice} `}</span>
-                                  <span className={allSelected ? 'strike': 'no-strike'}>{`${8000} `}</span>
-                                  Ksh
-                                </h1>
+                              <h2>Request for the files</h2>
+                              <div className="school-results__content__banner">
+                                <div>
+                                  <p>1. Choose the files you would like to download</p>
+                                  <p>2. Enter your email and phone number</p>
+                                  <p>3. You will receive an email with a download link to the files.</p>
+                                  <p>4. Once you click on the link sent to your email, you will receive an MPESA payment prompt.</p>
+                                  <p>5. If the payment is successful, you will receive an email with the files you selected.</p>
+                                </div>
                               </div>
                             </div>
-                          </form>
-                          <img src={viewFiles} alt="" className="illustration" />
+                            <form onSubmit={this.requestFiles}>
+                              {this.renderInput(
+                                'email',
+                                'email',
+                                'Email Address',
+                                validateEmail,
+                                'Please enter a valid email')
+                              }
+                              {this.renderInput(
+                                'phoneNumber',
+                                'phone',
+                                'MPESA phone number',
+                                validatePhone,
+                                'Please enter a valid phone number')
+                              }
+                              <div>
+                                <button type="submit" disabled={hasBlankFields}>
+                              Get Files
+                                </button>
+                                <div className="total">
+                                  {'Total '}
+                                  <h1>
+                                    <span className={allSelected ? 'strike': 'no-strike'}>{`${totalPrice} `}</span>
+                                    <span className={allSelected ? 'strike': 'no-strike'}>{`${8000} `}</span>
+                                  Ksh
+                                  </h1>
+                                </div>
+                              </div>
+                            </form>
+                            <img src={viewFiles} alt="" className="illustration" />
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )
-          }
-        </div>
-      </NavWrapper>
-    );
+              )
+            }
+          </div>
+        </NavWrapper>
+      ));
   };
 
   render() {

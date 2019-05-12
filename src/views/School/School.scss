@@ -33,6 +33,10 @@
       align-items: center;
       padding: 0 20px;
 
+      @include mobile {
+        font-size: 20px;
+      }
+
       p {
         font-size: 16px;
       }
@@ -50,6 +54,32 @@
         border-radius: 5px;
         transition: 0.5s all;
         outline: none;
+
+        i {
+          display: none;
+        }
+
+        @include mobile {
+          background: white;
+          color: #00009f;
+          width: auto;
+          display: flex;
+          align-items: center;
+          margin: 0;
+
+          i {
+            margin-left: 10px;
+          }
+
+          &:before, &:after {
+            display: none;
+          }
+
+          &:hover {
+            background: #ccc;
+            padding: 0 20px;
+          }
+        }
 
         &:before , &:after{
           position: absolute;
@@ -83,37 +113,62 @@
       height: 100%;
       padding: 0 20px;
 
+      @include mobile {
+        padding: 0 10px;
+      }
+
       .files {
-        padding-right: 20px;
         &__premium{
           &__files {
             display: grid;
             grid-template-columns: 8fr 4fr;
             padding: 20px;
 
+            @include tablet_and_mobile {
+              grid-template-columns: auto;
+              grid-template-rows: 1fr auto;
+            }
+
             &__all {
               display: grid;
               justify-content: center;
+
+              @include tablet_and_mobile{
+                grid-row-start: 1;
+              }
             }
 
             .multiple-files {
-              width: 300px;
-              height: 300px;
+              width: 600px;
+              height: 600px;
+
+              @include mobile {
+                width: 300px;
+                height: 500px;
+              }
 
               .file {
                 margin-top: 100px;
-                width: 300px;
-                height: 300px;
               }
             }
 
             &__single {
-              display: grid;
-              grid-template-columns: repeat(auto-fill, minmax(100px, 250px));
-              justify-content: space-between;
-              grid-column-gap: 10px;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: space-around;
+
+              > div {
+                h2 {
+                  text-align: center;
+                }
+              }
 
               .file {
+                margin: 0 10px;
+                @include mobile {
+                  width: 200px;
+                }
               }
             }
           }
@@ -133,6 +188,17 @@
             align-items: center;
             margin-top: 100px;
 
+            @include tablet_and_mobile {
+              grid-template-columns: auto;
+            }
+
+            @include mobile {
+              padding: 5px 10px;
+              border: none;
+              border-top: 1px solid #ccc;
+              border-radius: 0;
+            }
+
             .illustration {
               height: 300px;
               grid-row-start: 1;
@@ -140,6 +206,10 @@
               align-self: center;
               justify-self: center;
               grid-row-end: 3;
+
+              @include tablet_and_mobile {
+                display: none;
+              }
             }
 
             form {
@@ -163,7 +233,7 @@
               }
 
               input {
-                width: 100%;
+                width: auto;
                 padding: 10px 20px;
                 background: white;
                 color: #666;
@@ -236,44 +306,6 @@
 
     li {
       margin-top: 20px;
-    }
-  }
-}
-
-.school-results__content {
-
-  @include mobile{
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    padding: 0 20px;
-
-    &__banner {
-      grid-row-start: 2;
-
-      img {
-        display: none;
-      }
-    }
-
-    &__info {
-      grid-row-start: 1;
-
-      .files {
-
-        &__premium {
-          &__files {
-            grid-auto-columns: minmax(50px ,100px);
-            .file {
-              width: 100px;
-              height: 100px;
-            }
-          }
-        }
-      }
-    }
-
-    &__title {
-      font-size: 20px !important;
     }
   }
 }

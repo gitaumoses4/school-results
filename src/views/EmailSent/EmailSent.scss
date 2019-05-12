@@ -1,16 +1,23 @@
+@import '../../index';
+
 .email-sent {
   display: grid;
-  width: 100vw;
+  width: calc(100vw - 40px);
   justify-items: center;
   justify-content: center;
+  padding: 0 20px;
 
   &__instructions {
-    width: 500px;
     text-align: center;
   }
 
   &__banner {
     width: 300px;
+
+    @include mobile {
+      width: auto;
+      height: 200px;
+    }
   }
 
   &__emails {
