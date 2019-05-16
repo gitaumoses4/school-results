@@ -202,7 +202,7 @@ class School extends Component {
                         <i className="fas fa-chevron-right" />
                       </button>
                     </h4>
-                    <p>The files below contain analysis based on the schools performance over the years.</p>
+                    <p className="school-results__content__title__sub_title">The files below contain analysis based on the schools performance over the years.</p>
                     <div className="files">
                       <div className="files__premium">
                         <div className="files__premium__files">
@@ -236,52 +236,52 @@ class School extends Component {
                                 selected={allSelected}
                                 locked />
                             }
-                          </div>
-                        </div>
-                        <div className="files__premium__complete">
-                          <div className="files__premium__form">
-                            <div>
-                              <h2>Request for the files</h2>
-                              <div className="school-results__content__banner">
+                            <div className="files__premium__complete">
+                              <div className="files__premium__form">
                                 <div>
-                                  <p>1. Choose the files you would like to download</p>
-                                  <p>2. Enter your email and phone number</p>
-                                  <p>3. You will receive an email with a download link to the files.</p>
-                                  <p>4. Once you click on the link sent to your email, you will receive an MPESA payment prompt.</p>
-                                  <p>5. If the payment is successful, you will receive an email with the files you selected.</p>
+                                  <h2>Request for the files</h2>
+                                  <div className="school-results__content__banner">
+                                    <div>
+                                      <p>1. Choose the files you would like to download</p>
+                                      <p>2. Enter your email and phone number</p>
+                                      <p>3. You will receive an email with a download link to the files.</p>
+                                      <p>4. Once you click on the link sent to your email, you will receive an MPESA payment prompt.</p>
+                                      <p>5. If the payment is successful, you will receive an email with the files you selected.</p>
+                                    </div>
+                                  </div>
                                 </div>
+                                <form onSubmit={this.requestFiles}>
+                                  {this.renderInput(
+                                    'email',
+                                    'email',
+                                    'Email Address',
+                                    validateEmail,
+                                    'Please enter a valid email')
+                                  }
+                                  {this.renderInput(
+                                    'phoneNumber',
+                                    'phone',
+                                    'MPESA phone number',
+                                    validatePhone,
+                                    'Please enter a valid phone number')
+                                  }
+                                  <div>
+                                    <button type="submit" disabled={hasBlankFields}>
+                              Get Files
+                                    </button>
+                                    <div className="total">
+                                      {'Total '}
+                                      <h1>
+                                        <span className={allSelected ? 'strike': 'no-strike'}>{`${totalPrice} `}</span>
+                                        <span className={allSelected ? 'strike': 'no-strike'}>{`${8000} `}</span>
+                                  Ksh
+                                      </h1>
+                                    </div>
+                                  </div>
+                                </form>
+                                <img src={viewFiles} alt="" className="illustration" />
                               </div>
                             </div>
-                            <form onSubmit={this.requestFiles}>
-                              {this.renderInput(
-                                'email',
-                                'email',
-                                'Email Address',
-                                validateEmail,
-                                'Please enter a valid email')
-                              }
-                              {this.renderInput(
-                                'phoneNumber',
-                                'phone',
-                                'MPESA phone number',
-                                validatePhone,
-                                'Please enter a valid phone number')
-                              }
-                              <div>
-                                <button type="submit" disabled={hasBlankFields}>
-                              Get Files
-                                </button>
-                                <div className="total">
-                                  {'Total '}
-                                  <h1>
-                                    <span className={allSelected ? 'strike': 'no-strike'}>{`${totalPrice} `}</span>
-                                    <span className={allSelected ? 'strike': 'no-strike'}>{`${8000} `}</span>
-                                  Ksh
-                                  </h1>
-                                </div>
-                              </div>
-                            </form>
-                            <img src={viewFiles} alt="" className="illustration" />
                           </div>
                         </div>
                       </div>

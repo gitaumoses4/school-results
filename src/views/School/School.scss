@@ -37,7 +37,8 @@
         font-size: 20px;
       }
 
-      p {
+      &__sub_title {
+        padding: 0 10px;
         font-size: 16px;
       }
 
@@ -114,14 +115,14 @@
       padding: 0 20px;
 
       @include mobile {
-        padding: 0 10px;
+        padding: 0 0;
       }
 
       .files {
         &__premium{
           &__files {
             display: grid;
-            grid-template-columns: 8fr 4fr;
+            grid-template-columns: 6fr 6fr;
             padding: 20px;
 
             @include tablet_and_mobile {
@@ -131,10 +132,12 @@
 
             &__all {
               display: grid;
+              grid-template-rows: auto 1fr;
               justify-content: center;
+              align-items: start;
 
               @include tablet_and_mobile{
-                grid-row-start: 1;
+                grid-row-start: 2;
               }
             }
 
@@ -156,7 +159,6 @@
               display: flex;
               flex-direction: row;
               flex-wrap: wrap;
-              justify-content: space-around;
 
               > div {
                 h2 {
@@ -166,8 +168,12 @@
 
               .file {
                 margin: 0 10px;
+                width: 250px;
+                height: 250px;
+                cursor: pointer;
                 @include mobile {
                   width: 200px;
+                  height: 200px;
                 }
               }
             }
@@ -175,21 +181,23 @@
 
           &__complete {
             display: grid;
+            position: sticky;
+            top: 10px;
             justify-content: center;
           }
 
           &__form {
             border: 1px solid #ccc;
             padding: 20px 50px;
+            background: white;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: auto;
             grid-template-rows: auto auto;
             border-radius: 20px;
             align-items: center;
             margin-top: 100px;
 
             @include tablet_and_mobile {
-              grid-template-columns: auto;
             }
 
             @include mobile {
@@ -202,6 +210,7 @@
             .illustration {
               height: 300px;
               grid-row-start: 1;
+              display: none;
               grid-column-start: 2;
               align-self: center;
               justify-self: center;
@@ -241,7 +250,7 @@
                 height: 30px;
                 border-radius: 3px;
                 font-size: 16px;
-                border: 1px solid #ccc;
+                border: 1px solid #767676;
                 outline: none;
               }
 

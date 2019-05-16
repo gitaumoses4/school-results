@@ -12,6 +12,8 @@
 
     &__banner {
       height: 100px !important;
+      width: 100px !important;
+      justify-self: center;
     }
 
     &__sub-title {
@@ -51,6 +53,17 @@
   &__banner {
     padding: 40px;
     height: 200px;
+    animation: rotate infinite 1.6s linear;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
   &__sub-title {

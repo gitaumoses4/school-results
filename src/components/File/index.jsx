@@ -16,8 +16,9 @@ const icons = {
   xlsx: xls
 };
 const File = ({ type ,link, name, locked, selected, onClick, price, description}) => (
-  <div>
+  <div className="base__file">
     <h2>{FileTypes[description]}</h2>
+    <FileDescription type={description} />
     <a href={link} className="file" onClick={onClick}>
       {
         locked ? (
@@ -33,6 +34,11 @@ const File = ({ type ,link, name, locked, selected, onClick, price, description}
       }
       <div className="file__icon">
         <img src={icons[locked ? selected ? 'selected': 'locked' : type]} alt="" />
+        {
+          locked && !selected && (
+            <span>Click to choose</span>
+          )
+        }
       </div>
       <div className="file__name">
         <img src={icons[type]} alt="" className="file__name__icon" />

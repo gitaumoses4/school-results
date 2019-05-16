@@ -3,10 +3,9 @@ import './Home.scss';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import SearchForm from '../../components/SearchForm';
-import analysis from '../../assets/images/analysis.svg';
+import analysis from '../../assets/images/logo.png';
 import SearchResults from '../../components/SearchResults';
 import {searchSchools} from '../../redux/actions/actions';
-import Nav from '../../components/Nav';
 import NavWrapper from '../../components/NavWrapper';
 
 class Home extends Component{
