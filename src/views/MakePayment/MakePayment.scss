@@ -52,6 +52,15 @@
       grid-template-columns: repeat(auto-fill, minmax(100px, 250px));
       grid-column-gap: 20px;
 
+      .base__file {
+        > h2 {
+          font-size: 20px;
+          font-weight: 300;
+        }
+      }
+      .file-description {
+        display: none;
+      }
       @include  tablet {
         display: flex;
         justify-content: space-around;
@@ -70,11 +79,15 @@
         width: 200px;
         height: 200px;
         border: 1px solid #ccc;
-        border-radius: 0;
 
         @include mobile {
           height: auto;
           width: auto;
+          background: white;
+          color: black;
+          justify-content: start;
+          border: none;
+
           .file__icon {
             display: none;
           }

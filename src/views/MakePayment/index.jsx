@@ -95,6 +95,7 @@ class MakePayment extends Component {
                       <File
                         name={file.name}
                         key={file.id}
+                        description={file.file_type}
                         type={file.name.substr(file.name.lastIndexOf('.')+1)}
                       />
                     ))
