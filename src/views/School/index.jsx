@@ -181,10 +181,11 @@ class School extends Component {
   renderPage = () => {
     const { history, school: { name = '', code, sample, other_files }, isLoading , error} = this.props;
     const { selectedFiles, hasBlankFields, allSelected , totalPrice, showingDescription} = this.state;
+    const discount = 0.967213115;
 
     return (
       error === 'Could not find school.' ? this.renderError(history) : (
-        <NavWrapper title={name} history={history} back amount={`${ allSelected ? 8000 : totalPrice} Ksh`}>
+        <NavWrapper title={name} history={history} back amount={`${ allSelected ? Math.round(totalPrice * discount) : totalPrice} Ksh`}>
           <div className="school-results">
             {this.renderDescription(showingDescription, Object.keys(FileTypes))}
             {this.renderLoader(isLoading)}
@@ -230,7 +231,7 @@ class School extends Component {
                               <ManyFiles
                                 name=""
                                 files={other_files}
-                                price={8000}
+                                price={2950}
                                 onClick={() => this.onFileChoose('all')}
                                 description="all"
                                 selected={allSelected}
@@ -267,14 +268,14 @@ class School extends Component {
                                   }
                                   <div>
                                     <button type="submit" disabled={hasBlankFields}>
-                              Get Files
+                                      Get Files
                                     </button>
                                     <div className="total">
                                       {'Total '}
                                       <h1>
                                         <span className={allSelected ? 'strike': 'no-strike'}>{`${totalPrice} `}</span>
-                                        <span className={allSelected ? 'strike': 'no-strike'}>{`${8000} `}</span>
-                                  Ksh
+                                        <span className={allSelected ? 'strike': 'no-strike'}>{`${Math.round(totalPrice * discount)} `}</span>
+                                      Ksh
                                       </h1>
                                     </div>
                                   </div>

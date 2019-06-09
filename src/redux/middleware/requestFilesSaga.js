@@ -8,7 +8,7 @@ export function* requestFilesSaga ({ data, history }) {
   try{
     const { data: response } = yield call(SchoolsService.requestFiles, data);
     yield put(requestFilesSuccess(response));
-    history.push('/email-sent');
+    history.push(`/request-files/${response.token}`);
   }catch(error){
     yield put(requestFilesFailure(errorHandler(error)));
   }

@@ -2,7 +2,7 @@
 
 .make-payment {
   display: grid;
-  width: 100vw;
+  width: 98vw;
   grid-template-columns: 1fr 1fr;
 
   @include  tablet_and_mobile {
@@ -12,10 +12,11 @@
   &__payment {
     margin-top: 30px;
     padding: 20px 20px;
+    border: 1px solid #ccc;
+
     @include tablet_and_mobile {
       display: grid;
       justify-content: center;
-      border: 1px solid #ccc;
     }
 
   }

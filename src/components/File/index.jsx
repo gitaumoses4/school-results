@@ -48,15 +48,17 @@ const File = ({ type ,link, name, locked, selected, onClick, price, description}
   </div>
 );
 
-const ManyFiles = ({count, description, files, selected, onClick}) => {
+const ManyFiles = ({count, description, files, selected, onClick, price}) => {
   return (
     <div className="multiple-files">
       <h2>
         {FileTypes[description]}
-        {' at '}
-        20% Discount
+        {' '}
+      at a Discount
       </h2>
-      Buy all the files at 8000 Ksh
+      <span>
+        {`Buy all the files at ${price} Ksh`}
+      </span>
       {
         files.map((file) => (
           <File

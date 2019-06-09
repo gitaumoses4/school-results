@@ -63,7 +63,7 @@ class MakePayment extends Component {
   };
 
   render(){
-    const { history, isLoading, requestInfo: { files = [] }, paymentError, paymentSuccess} = this.props;
+    const { history, isLoading, requestInfo: { files = [] , email }, paymentError, paymentSuccess} = this.props;
     const { phoneNumber, error , modal: { isShowing, message, title, subTitle}} = this.state;
     return (
       <NavWrapper history={history} goHome back>
@@ -102,6 +102,8 @@ class MakePayment extends Component {
                   }
                 </div>
                 <div className="make-payment__payment">
+                  <h2>Email</h2>
+                  <p>{email}</p>
                   <h2>MPESA Phone Number</h2>
                   <div className="make-payment__info__form">
                     <form onSubmit={this.makePayment}>
