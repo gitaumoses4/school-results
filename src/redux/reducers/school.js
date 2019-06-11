@@ -12,7 +12,14 @@ export default (state = initialState, action) => {
   case FETCH_SCHOOL:
     return {...state, isLoading: true};
   case `${FETCH_SCHOOL}_SUCCESS`:
-    return {...state, isLoading: false, school: action.school};
+    return {...state, isLoading: false,
+      school: {
+        ...action.school,
+        other_files: action.school.other_files.filter(
+          file => file.file_type !== 'raw'
+        )
+      }
+    };
   case `${FETCH_SCHOOL}_FAILURE`:
     return {...state, isLoading: false, error: action.error};
   case REQUEST_FILES:

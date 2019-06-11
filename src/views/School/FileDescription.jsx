@@ -96,7 +96,7 @@ const Kenya = () => (
 const All = () => (
   <ul>
     <li>
-      You can buy all the above data at a 20% discount cost. All data will be sent into your email address.
+      You can buy all the above data at a discount. All data will be sent into your email address.
     </li>
   </ul>
 );

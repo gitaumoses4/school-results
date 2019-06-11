@@ -187,7 +187,7 @@ class School extends Component {
       error === 'Could not find school.' ? this.renderError(history) : (
         <NavWrapper title={name} history={history} back amount={`${ allSelected ? Math.round(totalPrice * discount) : totalPrice} Ksh`}>
           <div className="school-results">
-            {this.renderDescription(showingDescription, Object.keys(FileTypes))}
+            {this.renderDescription(showingDescription, Object.keys(FileTypes).filter(file => file !== 'raw'))}
             {this.renderLoader(isLoading)}
             {
               (!isLoading || name) && (
